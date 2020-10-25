@@ -62,16 +62,11 @@ def func_stats(weights,rets):
     pvols = np.sqrt(np.dot(weights.T,np.dot(weights,rets.cov()*252)))
     #portfolio's volatility 
     return np.array([prets,pvols])
-
-def func_min_variance(weights,rets):
-    return func_stats(weights,rets)[1]**2
 def func_min_vol(weights,rets):
     return func_stats(weights,rets)[1]
 
 # get the efficient frontier
-ret_min = min(prets)
 ret_max = max(prets)
-vol_min = min(pvols)
 ind_min_vol = np.argmin(pvols)
 ret_start = prets[ind_min_vol]
 
